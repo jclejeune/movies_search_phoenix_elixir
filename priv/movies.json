@@ -1,0 +1,777 @@
+{
+  "movies": [
+    {
+      "description": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+      "director": "Frank Darabont",
+      "duration": 142,
+      "genre": [
+        "Drama"
+      ],
+      "id": 1,
+      "poster": "/images/posters/movie_1.jpg",
+      "rating": 9.3,
+      "title": "The Shawshank Redemption",
+      "year": 1994
+    },
+    {
+      "description": "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
+      "director": "Francis Ford Coppola",
+      "duration": 175,
+      "genre": [
+        "Crime",
+        "Drama"
+      ],
+      "id": 2,
+      "poster": "/images/posters/movie_2.jpg",
+      "rating": 9.2,
+      "title": "The Godfather",
+      "year": 1972
+    },
+    {
+      "description": "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests.",
+      "director": "Christopher Nolan",
+      "duration": 152,
+      "genre": [
+        "Action",
+        "Crime",
+        "Drama"
+      ],
+      "id": 3,
+      "poster": "/images/posters/movie_3.jpg",
+      "rating": 9.0,
+      "title": "The Dark Knight",
+      "year": 2008
+    },
+    {
+      "description": "A jury holdout attempts to prevent a miscarriage of justice by forcing his colleagues to reconsider the evidence.",
+      "director": "Sidney Lumet",
+      "duration": 96,
+      "genre": [
+        "Drama"
+      ],
+      "id": 4,
+      "poster": "/images/posters/movie_4.jpg",
+      "rating": 9.0,
+      "title": "12 Angry Men",
+      "year": 1957
+    },
+    {
+      "description": "In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce.",
+      "director": "Steven Spielberg",
+      "duration": 195,
+      "genre": [
+        "Biography",
+        "Drama",
+        "History"
+      ],
+      "id": 5,
+      "poster": "/images/posters/movie_5.jpg",
+      "rating": 8.9,
+      "title": "Schindler's List",
+      "year": 1993
+    },
+    {
+      "description": "Gandalf and Aragorn lead the World of Men against Sauron's army to draw his gaze from Frodo and Sam as they approach Mount Doom.",
+      "director": "Peter Jackson",
+      "duration": 201,
+      "genre": [
+        "Action",
+        "Adventure",
+        "Drama"
+      ],
+      "id": 6,
+      "poster": "/images/posters/movie_6.jpg",
+      "rating": 8.9,
+      "title": "The Lord of the Rings: The Return of the King",
+      "year": 2003
+    },
+    {
+      "description": "The lives of two mob hitmen, a boxer, a gangster and his wife intertwine in four tales of violence and redemption.",
+      "director": "Quentin Tarantino",
+      "duration": 154,
+      "genre": [
+        "Crime",
+        "Drama"
+      ],
+      "id": 7,
+      "poster": "/images/posters/movie_7.jpg",
+      "rating": 8.9,
+      "title": "Pulp Fiction",
+      "year": 1994
+    },
+    {
+      "description": "A bounty hunting scam joins two men in an uneasy alliance against a third in a race to find a fortune in gold.",
+      "director": "Sergio Leone",
+      "duration": 178,
+      "genre": [
+        "Western"
+      ],
+      "id": 8,
+      "poster": "/images/posters/movie_8.jpg",
+      "rating": 8.8,
+      "title": "The Good, the Bad and the Ugly",
+      "year": 1966
+    },
+    {
+      "description": "An insomniac office worker and a devil-may-care soap maker form an underground fight club.",
+      "director": "David Fincher",
+      "duration": 139,
+      "genre": [
+        "Drama"
+      ],
+      "id": 9,
+      "poster": "/images/posters/movie_9.jpg",
+      "rating": 8.8,
+      "title": "Fight Club",
+      "year": 1999
+    },
+    {
+      "description": "The presidencies of Kennedy and Johnson, the Vietnam War, and other historical events unfold from the perspective of an Alabama man.",
+      "director": "Robert Zemeckis",
+      "duration": 142,
+      "genre": [
+        "Drama",
+        "Romance"
+      ],
+      "id": 10,
+      "poster": "/images/posters/movie_10.jpg",
+      "rating": 8.8,
+      "title": "Forrest Gump",
+      "year": 1994
+    },
+    {
+      "description": "A thief who steals corporate secrets through dream-sharing technology is given the inverse task of planting an idea.",
+      "director": "Christopher Nolan",
+      "duration": 148,
+      "genre": [
+        "Action",
+        "Sci-Fi",
+        "Thriller"
+      ],
+      "id": 11,
+      "poster": "/images/posters/movie_11.jpg",
+      "rating": 8.7,
+      "title": "Inception",
+      "year": 2010
+    },
+    {
+      "description": "While Frodo and Sam edge closer to Mordor with the help of Gollum, the divided fellowship makes a stand against Sauron's new ally.",
+      "director": "Peter Jackson",
+      "duration": 179,
+      "genre": [
+        "Action",
+        "Adventure",
+        "Drama"
+      ],
+      "id": 12,
+      "poster": "/images/posters/movie_12.jpg",
+      "rating": 8.7,
+      "title": "The Lord of the Rings: The Two Towers",
+      "year": 2002
+    },
+    {
+      "description": "A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring.",
+      "director": "Peter Jackson",
+      "duration": 178,
+      "genre": [
+        "Action",
+        "Adventure",
+        "Drama"
+      ],
+      "id": 13,
+      "poster": "/images/posters/movie_13.jpg",
+      "rating": 8.7,
+      "title": "The Lord of the Rings: The Fellowship of the Ring",
+      "year": 2001
+    },
+    {
+      "description": "After the Rebels are overpowered by the Empire, Luke Skywalker begins Jedi training with Yoda.",
+      "director": "Irvin Kershner",
+      "duration": 124,
+      "genre": [
+        "Action",
+        "Adventure",
+        "Fantasy"
+      ],
+      "id": 14,
+      "poster": "/images/posters/movie_14.jpg",
+      "rating": 8.7,
+      "title": "Star Wars: Episode V - The Empire Strikes Back",
+      "year": 1980
+    },
+    {
+      "description": "When a beautiful stranger leads computer hacker Neo to a forbidding underworld, he discovers the shocking truth.",
+      "director": "Lana Wachowski",
+      "duration": 136,
+      "genre": [
+        "Action",
+        "Sci-Fi"
+      ],
+      "id": 15,
+      "poster": "/images/posters/movie_15.jpg",
+      "rating": 8.7,
+      "title": "The Matrix",
+      "year": 1999
+    },
+    {
+      "description": "The story of Henry Hill and his life in the mob, covering his relationship with his wife Karen Hill.",
+      "director": "Martin Scorsese",
+      "duration": 145,
+      "genre": [
+        "Biography",
+        "Crime",
+        "Drama"
+      ],
+      "id": 16,
+      "poster": "/images/posters/movie_16.jpg",
+      "rating": 8.7,
+      "title": "Goodfellas",
+      "year": 1990
+    },
+    {
+      "description": "A criminal pleads insanity and is admitted to a mental institution, where he rallies up the scared patients.",
+      "director": "Milos Forman",
+      "duration": 133,
+      "genre": [
+        "Drama"
+      ],
+      "id": 17,
+      "poster": "/images/posters/movie_17.jpg",
+      "rating": 8.7,
+      "title": "One Flew Over the Cuckoo's Nest",
+      "year": 1975
+    },
+    {
+      "description": "Two detectives hunt a serial killer who uses the seven deadly sins as his motives.",
+      "director": "David Fincher",
+      "duration": 127,
+      "genre": [
+        "Crime",
+        "Drama",
+        "Mystery"
+      ],
+      "id": 18,
+      "poster": "/images/posters/movie_18.jpg",
+      "rating": 8.6,
+      "title": "Se7en",
+      "year": 1995
+    },
+    {
+      "description": "A poor village under attack by bandits recruits seven unemployed samurai to help them defend themselves.",
+      "director": "Akira Kurosawa",
+      "duration": 207,
+      "genre": [
+        "Action",
+        "Adventure",
+        "Drama"
+      ],
+      "id": 19,
+      "poster": "/images/posters/movie_19.jpg",
+      "rating": 8.6,
+      "title": "Seven Samurai",
+      "year": 1954
+    },
+    {
+      "description": "When an open-minded Jewish librarian and his son become victims of the Holocaust, he uses humor to protect his son.",
+      "director": "Roberto Benigni",
+      "duration": 116,
+      "genre": [
+        "Comedy",
+        "Drama",
+        "Romance"
+      ],
+      "id": 20,
+      "poster": "/images/posters/movie_20.jpg",
+      "rating": 8.6,
+      "title": "Life Is Beautiful",
+      "year": 1997
+    },
+    {
+      "description": "A young F.B.I. cadet must receive the help of an incarcerated and manipulative cannibal killer to help catch another serial killer.",
+      "director": "Jonathan Demme",
+      "duration": 118,
+      "genre": [
+        "Crime",
+        "Drama",
+        "Thriller"
+      ],
+      "id": 21,
+      "poster": "/images/posters/movie_21.jpg",
+      "rating": 8.6,
+      "title": "The Silence of the Lambs",
+      "year": 1991
+    },
+    {
+      "description": "Following the Normandy Landings, a group of U.S. soldiers go behind enemy lines to retrieve a paratrooper.",
+      "director": "Steven Spielberg",
+      "duration": 169,
+      "genre": [
+        "Drama",
+        "War"
+      ],
+      "id": 22,
+      "poster": "/images/posters/movie_22.jpg",
+      "rating": 8.6,
+      "title": "Saving Private Ryan",
+      "year": 1998
+    },
+    {
+      "description": "In the slums of Rio, two kids' paths diverge as one struggles to become a photographer and the other a kingpin.",
+      "director": "Fernando Meirelles",
+      "duration": 130,
+      "genre": [
+        "Crime",
+        "Drama"
+      ],
+      "id": 23,
+      "poster": "/images/posters/movie_23.jpg",
+      "rating": 8.6,
+      "title": "City of God",
+      "year": 2002
+    },
+    {
+      "description": "During her family's move to the suburbs, a sullen 10-year-old girl wanders into a world ruled by gods and witches.",
+      "director": "Hayao Miyazaki",
+      "duration": 125,
+      "genre": [
+        "Animation",
+        "Adventure",
+        "Family"
+      ],
+      "id": 24,
+      "poster": "/images/posters/movie_24.jpg",
+      "rating": 8.6,
+      "title": "Spirited Away",
+      "year": 2001
+    },
+    {
+      "description": "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
+      "director": "Christopher Nolan",
+      "duration": 169,
+      "genre": [
+        "Adventure",
+        "Drama",
+        "Sci-Fi"
+      ],
+      "id": 25,
+      "poster": "/images/posters/movie_25.jpg",
+      "rating": 8.6,
+      "title": "Interstellar",
+      "year": 2014
+    },
+    {
+      "description": "A cynical expatriate American cafe owner struggles to decide whether or not to help his former lover escape.",
+      "director": "Michael Curtiz",
+      "duration": 102,
+      "genre": [
+        "Drama",
+        "Romance",
+        "War"
+      ],
+      "id": 26,
+      "poster": "/images/posters/movie_26.jpg",
+      "rating": 8.5,
+      "title": "Casablanca",
+      "year": 1942
+    },
+    {
+      "description": "The lives of guards on Death Row are affected by one of their charges: a black man accused of child murder and rape.",
+      "director": "Frank Darabont",
+      "duration": 189,
+      "genre": [
+        "Crime",
+        "Drama",
+        "Fantasy"
+      ],
+      "id": 27,
+      "poster": "/images/posters/movie_27.jpg",
+      "rating": 8.5,
+      "title": "The Green Mile",
+      "year": 1999
+    },
+    {
+      "description": "12-year-old Mathilda is reluctantly taken in by LÃ©on, a professional assassin, after her family is murdered.",
+      "director": "Luc Besson",
+      "duration": 110,
+      "genre": [
+        "Action",
+        "Crime",
+        "Drama"
+      ],
+      "id": 28,
+      "poster": "/images/posters/movie_28.jpg",
+      "rating": 8.5,
+      "title": "Leon: The Professional",
+      "year": 1994
+    },
+    {
+      "description": "A sole survivor tells of the twisty events leading up to a horrific gun battle on a boat.",
+      "director": "Bryan Singer",
+      "duration": 106,
+      "genre": [
+        "Crime",
+        "Mystery",
+        "Thriller"
+      ],
+      "id": 29,
+      "poster": "/images/posters/movie_29.jpg",
+      "rating": 8.5,
+      "title": "The Usual Suspects",
+      "year": 1995
+    },
+    {
+      "description": "An aging samurai arrives at the home of his feudal lord, requesting an honorable place to commit suicide.",
+      "director": "Masaki Kobayashi",
+      "duration": 133,
+      "genre": [
+        "Action",
+        "Drama",
+        "Mystery"
+      ],
+      "id": 30,
+      "poster": "/images/posters/movie_30.jpg",
+      "rating": 8.5,
+      "title": "Harakiri",
+      "year": 1962
+    },
+    {
+      "description": "Lion prince Simba and his father are targeted by his bitter uncle, who wants to ascend the throne himself.",
+      "director": "Roger Allers",
+      "duration": 88,
+      "genre": [
+        "Animation",
+        "Adventure",
+        "Drama"
+      ],
+      "id": 31,
+      "poster": "/images/posters/movie_31.jpg",
+      "rating": 8.5,
+      "title": "The Lion King",
+      "year": 1994
+    },
+    {
+      "description": "Marty McFly, a 17-year-old high school student, is accidentally sent thirty years into the past in a time-traveling DeLorean.",
+      "director": "Robert Zemeckis",
+      "duration": 116,
+      "genre": [
+        "Adventure",
+        "Comedy",
+        "Sci-Fi"
+      ],
+      "id": 32,
+      "poster": "/images/posters/movie_32.jpg",
+      "rating": 8.5,
+      "title": "Back to the Future",
+      "year": 1985
+    },
+    {
+      "description": "A cyborg, identical to the one who failed to kill Sarah Connor, must now protect her teenage son John Connor from a more advanced cyborg.",
+      "director": "James Cameron",
+      "duration": 137,
+      "genre": [
+        "Action",
+        "Sci-Fi"
+      ],
+      "id": 33,
+      "poster": "/images/posters/movie_33.jpg",
+      "rating": 8.5,
+      "title": "Terminator 2: Judgment Day",
+      "year": 1991
+    },
+    {
+      "description": "A sexually frustrated suburban father has a mid-life crisis after becoming infatuated with his daughter's best friend.",
+      "director": "Sam Mendes",
+      "duration": 122,
+      "genre": [
+        "Drama"
+      ],
+      "id": 34,
+      "poster": "/images/posters/movie_34.jpg",
+      "rating": 8.4,
+      "title": "American Beauty",
+      "year": 1999
+    },
+    {
+      "description": "A Phoenix secretary embezzles money from her employer's client, goes on the run and checks into a remote motel.",
+      "director": "Alfred Hitchcock",
+      "duration": 109,
+      "genre": [
+        "Horror",
+        "Mystery",
+        "Thriller"
+      ],
+      "id": 35,
+      "poster": "/images/posters/movie_35.jpg",
+      "rating": 8.4,
+      "title": "Psycho",
+      "year": 1960
+    },
+    {
+      "description": "The Tramp struggles to live in modern industrial society with the help of a young homeless woman.",
+      "director": "Charlie Chaplin",
+      "duration": 87,
+      "genre": [
+        "Comedy",
+        "Drama",
+        "Family"
+      ],
+      "id": 36,
+      "poster": "/images/posters/movie_36.jpg",
+      "rating": 8.4,
+      "title": "Modern Times",
+      "year": 1936
+    },
+    {
+      "description": "In 1936, archaeologist and adventurer Indiana Jones is hired to find the Ark of the Covenant before the Nazis.",
+      "director": "Steven Spielberg",
+      "duration": 115,
+      "genre": [
+        "Action",
+        "Adventure"
+      ],
+      "id": 37,
+      "poster": "/images/posters/movie_37.jpg",
+      "rating": 8.4,
+      "title": "Raiders of the Lost Ark",
+      "year": 1981
+    },
+    {
+      "description": "A wheelchair-bound photographer spies on his neighbors from his apartment window and becomes convinced one of them has committed murder.",
+      "director": "Alfred Hitchcock",
+      "duration": 112,
+      "genre": [
+        "Mystery",
+        "Thriller"
+      ],
+      "id": 38,
+      "poster": "/images/posters/movie_38.jpg",
+      "rating": 8.4,
+      "title": "Rear Window",
+      "year": 1954
+    },
+    {
+      "description": "Following the death of publishing tycoon Charles Foster Kane, reporters scramble to uncover the meaning of his final utterance.",
+      "director": "Orson Welles",
+      "duration": 119,
+      "genre": [
+        "Drama",
+        "Mystery"
+      ],
+      "id": 39,
+      "poster": "/images/posters/movie_39.jpg",
+      "rating": 8.4,
+      "title": "Citizen Kane",
+      "year": 1941
+    },
+    {
+      "description": "After a tragic accident, two stage magicians engage in a battle to create the ultimate illusion.",
+      "director": "Christopher Nolan",
+      "duration": 130,
+      "genre": [
+        "Drama",
+        "Mystery",
+        "Sci-Fi"
+      ],
+      "id": 40,
+      "poster": "/images/posters/movie_40.jpg",
+      "rating": 8.4,
+      "title": "The Prestige",
+      "year": 2006
+    },
+    {
+      "description": "A U.S. Army officer serving in Vietnam is tasked with assassinating a renegade Special Forces Colonel.",
+      "director": "Francis Ford Coppola",
+      "duration": 147,
+      "genre": [
+        "Drama",
+        "Mystery",
+        "War"
+      ],
+      "id": 41,
+      "poster": "/images/posters/movie_41.jpg",
+      "rating": 8.4,
+      "title": "Apocalypse Now",
+      "year": 1979
+    },
+    {
+      "description": "After a space merchant vessel receives an unknown transmission as a distress call, one of the crew is attacked by a mysterious life form.",
+      "director": "Ridley Scott",
+      "duration": 117,
+      "genre": [
+        "Horror",
+        "Sci-Fi"
+      ],
+      "id": 42,
+      "poster": "/images/posters/movie_42.jpg",
+      "rating": 8.4,
+      "title": "Alien",
+      "year": 1979
+    },
+    {
+      "description": "A hack screenwriter writes a screenplay for a former silent film star who has faded into Hollywood obscurity.",
+      "director": "Billy Wilder",
+      "duration": 110,
+      "genre": [
+        "Drama",
+        "Film-Noir"
+      ],
+      "id": 43,
+      "poster": "/images/posters/movie_43.jpg",
+      "rating": 8.4,
+      "title": "Sunset Boulevard",
+      "year": 1950
+    },
+    {
+      "description": "An insane American general triggers a path to nuclear holocaust that a War Room full of politicians and generals frantically tries to stop.",
+      "director": "Stanley Kubrick",
+      "duration": 95,
+      "genre": [
+        "Comedy",
+        "War"
+      ],
+      "id": 44,
+      "poster": "/images/posters/movie_44.jpg",
+      "rating": 8.4,
+      "title": "Dr. Strangelove",
+      "year": 1964
+    },
+    {
+      "description": "Dictator Adenoid Hynkel tries to expand his empire while a poor Jewish barber tries to avoid persecution from Hynkel's regime.",
+      "director": "Charlie Chaplin",
+      "duration": 125,
+      "genre": [
+        "Comedy",
+        "Drama",
+        "War"
+      ],
+      "id": 45,
+      "poster": "/images/posters/movie_45.jpg",
+      "rating": 8.4,
+      "title": "The Great Dictator",
+      "year": 1940
+    },
+    {
+      "description": "A man with short-term memory loss attempts to track down his wife's murderer.",
+      "director": "Christopher Nolan",
+      "duration": 113,
+      "genre": [
+        "Mystery",
+        "Thriller"
+      ],
+      "id": 46,
+      "poster": "/images/posters/movie_46.jpg",
+      "rating": 8.4,
+      "title": "Memento",
+      "year": 2000
+    },
+    {
+      "description": "A Polish Jewish musician struggles to survive the destruction of the Warsaw ghetto of World War II.",
+      "director": "Roman Polanski",
+      "duration": 150,
+      "genre": [
+        "Biography",
+        "Drama",
+        "Music"
+      ],
+      "id": 47,
+      "poster": "/images/posters/movie_47.jpg",
+      "rating": 8.4,
+      "title": "The Pianist",
+      "year": 2002
+    },
+    {
+      "description": "An undercover cop and a police informant try to identify each other while infiltrating an Irish gang in South Boston.",
+      "director": "Martin Scorsese",
+      "duration": 151,
+      "genre": [
+        "Crime",
+        "Drama",
+        "Thriller"
+      ],
+      "id": 48,
+      "poster": "/images/posters/movie_48.jpg",
+      "rating": 8.4,
+      "title": "The Departed",
+      "year": 2006
+    },
+    {
+      "description": "A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.",
+      "director": "Ridley Scott",
+      "duration": 155,
+      "genre": [
+        "Action",
+        "Adventure",
+        "Drama"
+      ],
+      "id": 49,
+      "poster": "/images/posters/movie_49.jpg",
+      "rating": 8.4,
+      "title": "Gladiator",
+      "year": 2000
+    },
+    {
+      "description": "After the murder of his father, a young lion prince flees his kingdom only to learn the true meaning of responsibility and bravery.",
+      "director": "Jon Favreau",
+      "duration": 118,
+      "genre": [
+        "Animation",
+        "Adventure",
+        "Drama"
+      ],
+      "id": 50,
+      "poster": "/images/posters/movie_50.jpg",
+      "rating": 6.8,
+      "title": "The Lion King",
+      "year": 2019
+    },
+    {
+      "description": "",
+      "director": "Zack Snyder",
+      "duration": 143,
+      "genre": [
+        "Sci-Fi",
+        "Action",
+        "Super Héros",
+        "Aventure"
+      ],
+      "id": 51,
+      "poster": "/images/posters/movie_51.jpg",
+      "rating": 7.1,
+      "title": "Man of Steel",
+      "year": 2013
+    },
+    {
+      "description": "Vincent Hanna, un lieutenant chevronné de la LAPD, s'efforce de coincer Neil McCauley et ses criminels alors qu'ils préparent un grand braquage de banque pour leur “retraite”. La frontière ténue entre le crime et la loi s'avère plus ambiguë que jamais tandis que les deux s'opposent mortellement.",
+      "director": "Michael Mann",
+      "duration": 170,
+      "genre": [
+        "Policier",
+        "Gangster",
+        "Action",
+        "Cambriolage"
+      ],
+      "id": 52,
+      "poster": "/images/posters/movie_52.jpg",
+      "rating": 8.3,
+      "title": "Heat",
+      "year": 1995
+    },
+    {
+      "description": "Willow est un film américain réalisé par Ron Howard et sorti en 1988. Le film est produit par George Lucas et écrit par Bob Dolman (en) d'après une histoire de Lucas. Il raconte l'histoire d'un magicien amateur (Warwick Davis) qui fait équipe avec un guerrier (Val Kilmer) pour protéger un jeune bébé future princesse d'une reine tyrannique (Jean Marsh). ",
+      "director": "Ron Howard",
+      "duration": 126,
+      "genre": [
+        "Fantastique",
+        "Aventure",
+        "Magie",
+        "Epique",
+        "Quête"
+      ],
+      "id": 53,
+      "poster": "/images/posters/movie_53.jpg",
+      "rating": 7.2,
+      "title": "Willow",
+      "year": 1988
+    }
+  ]
+}

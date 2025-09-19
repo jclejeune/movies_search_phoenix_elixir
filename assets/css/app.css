@@ -1,0 +1,743 @@
+/* assets/css/app.css */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* Reset et base */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Consolas', 'Monaco', 'Lucida Console', monospace;
+  background: #3c3f41;
+  background-image: none;
+  min-height: 100vh;
+  line-height: 1.4;
+  color: #bbbbbb;
+}
+
+/* Container principal */
+.app-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #3c3f41;
+  border: 2px solid #646464;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Titre principal */
+.app-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #fa8b01;
+  background: #282828;
+  padding: 15px;
+  border: 2px solid #646464;
+  border-radius: 0;
+  font-family: 'Consolas', 'Monaco', 'Lucida Console', monospace;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* Panel de recherche */
+.search-panel {
+  background: #2d2d2d;
+  border: 2px inset #646464;
+  border-radius: 0;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.search-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+/* Groupes de formulaire */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #fa8b01;
+  margin-bottom: 5px;
+  display: block;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-family: 'Consolas', 'Monaco', 'Lucida Console', monospace;
+}
+
+.form-input, .form-select {
+  width: 100%;
+  padding: 8px;
+  background: #4d4d4d;
+  border: 2px inset #646464;
+  border-radius: 0;
+  font-size: 0.9rem;
+  color: #dcdc00;
+  transition: border-color 0.2s;
+  font-family: 'Consolas', 'Monaco', 'Lucida Console', monospace;
+}
+
+.form-input::placeholder {
+  color: #888888;
+  font-style: normal;
+}
+
+.form-input:focus, .form-select:focus {
+  outline: none;
+  background: #555555;
+  border: 2px solid #4b6eaf;
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.form-select {
+  cursor: pointer;
+}
+
+.form-select option {
+  background: #4d4d4d;
+  color: #dcdc00;
+  padding: 4px;
+}
+
+/* Actions du panel */
+.search-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #646464;
+}
+
+.results-count {
+  font-size: 0.9rem;
+  color: #bbbbbb;
+  font-weight: bold;
+  font-family: 'Consolas', 'Monaco', 'Lucida Console', monospace;
+  background: #282828;
+  padding: 5px 10px;
+  border: 1px solid #646464;
+}
+
+.reset-button {
+  background: #4d4d4d;
+  border: 2px outset #646464;
+  color: #dcdc00;
+  padding: 8px 16px;
+  border-radius: 0;
+  font-size: 0.85rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.1s;
+  font-family: 'Consolas', 'Monaco', 'Lucida Console', monospace;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.reset-button:hover {
+  background: #5a5a5a;
+  border: 2px outset #7a7a7a;
+}
+
+.reset-button:active {
+  border: 2px inset #646464;
+  background: #3a3a3a;
+}
+
+/* Grille des films */
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 15px;
+}
+
+/* Carte de film */
+.movie-card {
+  background: #2d2d2d;
+  border: 2px outset #646464;
+  border-radius: 0;
+  overflow: hidden;
+  transition: none;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.movie-card:hover {
+  background: #353535;
+  border: 2px outset #7a7a7a;
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+}
+
+.movie-poster {
+  background: #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 2px solid #646464;
+}
+
+.movie-poster img {
+  width: 100%;
+  object-fit: cover;
+  filter: contrast(1.1) brightness(0.9);
+}
+
+.movie-info {
+  padding: 15px;
+  background: #2d2d2d;
+}
+
+.movie-title {
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: 8px;
+  color: #fa8b01;
+  line-height: 1.2;
+  font-family: 'Consolas', 'Monaco', 'Lucida Console', monospace;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.movie-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.movie-year {
+  background: #282828;
+  color: #4b6eaf;
+  border: 2px solid #646464;
+  padding: 3px 8px;
+  border-radius: 0;
+  font-size: 0.75rem;
+  font-weight: bold;
+  font-family: 'Consolas', 'Monaco', 'Lucida Console', monospace;
+}
+
+.movie-rating {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  background: #282828;
+  border: 2px solid #646464;
+  padding: 3px 8px;
+  border-radius: 0;
+}
+
+.movie-rating .star {
+  color: #fa8b01;
+  font-size: 0.8rem;
+}
+
+.movie-rating .score {
+  font-weight: bold;
+  color: #dcdc00;
+  font-size: 0.75rem;
+  font-family: 'Consolas', 'Monaco', 'Lucida Console', monospace;
+}
+
+.movie-director {
+  font-size: 0.85rem;
+  color: #888888;
+  margin-bottom: 6px;
+  font-weight: normal;
+  font-family: 'Consolas', 'Monaco', 'Lucida Console', monospace;
+}
+
+.movie-genres {
+  font-size: 0.75rem;
+  color: #aaaaaa;
+  margin-bottom: 6px;
+  background: #1a1a1a;
+  padding: 4px 6px;
+  border-radius: 0;
+  border-left: 3px solid #fa8b01;
+  line-height: 1.3;
+  font-family: 'Consolas', 'Monaco', 'Lucida Console', monospace;
+}
+
+.movie-duration {
+  font-size: 0.75rem;
+  color: #777777;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: normal;
+  font-family: 'Consolas', 'Monaco', 'Lucida Console', monospace;
+}
+
+.movie-description {
+  font-size: 0.8rem;
+  color: #bbbbbb;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Message d'état vide */
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: #888888;
+  background: #282828;
+  border: 2px inset #646464;
+  border-radius: 0;
+}
+
+.empty-state .icon {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  opacity: 0.7;
+  color: #fa8b01;
+}
+
+.empty-state h3 {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #fa8b01;
+  font-family: 'Consolas', 'Monaco', 'Lucida Console', monospace;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.empty-state p {
+  opacity: 0.8;
+  font-size: 0.9rem;
+  color: #bbbbbb;
+}
+
+/* Scrollbar dans le style dark */
+::-webkit-scrollbar {
+  width: 18px;
+}
+
+::-webkit-scrollbar-track {
+  background: #2d2d2d;
+  border: 2px inset #646464;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4d4d4d;
+  border: 2px outset #646464;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #5a5a5a;
+}
+
+::-webkit-scrollbar-thumb:active {
+  border: 2px inset #646464;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .app-container {
+    padding: 15px;
+    margin: 10px;
+  }
+
+  .app-title {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    padding: 10px;
+  }
+
+  .search-panel {
+    padding: 15px;
+  }
+
+  .search-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .search-actions {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .movies-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-container {
+    padding: 10px;
+    margin: 5px;
+  }
+
+  .search-panel {
+    padding: 10px;
+  }
+
+  .movie-info {
+    padding: 10px;
+  }
+
+  .movies-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .movie-poster {
+    height: 160px;
+  }
+}
+
+/* Focus états dans le style dark */
+.form-input:focus,
+.form-select:focus,
+.reset-button:focus {
+  outline: 2px solid #4b6eaf;
+  outline-offset: 1px;
+}
+
+/* Sélections dans le style dark */
+::selection {
+  background: #4b6eaf;
+  color: #ffffff;
+}
+
+::-moz-selection {
+  background: #4b6eaf;
+  color: #ffffff;
+}
+
+/* Actions avec boutons multiples */
+.action-buttons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.imdb-button {
+  background: #2d2d2d;
+  border: 2px outset #646464;
+  color: #4b6eaf;
+  padding: 8px 16px;
+  border-radius: 0;
+  font-size: 0.85rem;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: 'Consolas', 'Monaco', 'Lucida Console', monospace;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.imdb-button:hover {
+  background: #353535;
+  color: #dcdc00;
+}
+
+/* Barre de progression style rétro */
+.imdb-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.progress-text {
+  font-family: 'Consolas', monospace;
+  color: #fa8b01;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.progress-bar {
+  width: 150px;
+  height: 12px;
+  background: #1a1a1a;
+  border: 2px inset #646464;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #af4b4b 0%, #fa8b01 100%);
+  transition: width 0.3s ease;
+}
+
+/* Amélioration de l'image avec fallback */
+.movie-poster img {
+  height: 100%;
+  object-fit: cover;
+  filter: contrast(1.1) brightness(0.9);
+}
+
+.movie-poster img[src*="placeholder"] {
+  object-fit: cover;
+  background: #1a1a1a;
+  padding: 20px;
+}
+
+/* Formulaire d'ajout de film - Style dark orange */
+.add-movie-section {
+  margin-bottom: 30px;
+}
+
+.add-movie-button {
+  background: #2d2d2d;
+  border: 2px outset #646464;
+  color: #fa8b01;
+  padding: 12px 24px;
+  border-radius: 0;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: 'Consolas', 'Monaco', 'Lucida Console', monospace;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  transition: all 0.1s;
+}
+
+.add-movie-button:hover {
+  background: #353535;
+  color: #dcdc00;
+  border: 2px outset #7a7a7a;
+}
+
+.add-movie-button:active {
+  border: 2px inset #646464;
+  background: #3a3a3a;
+}
+
+.add-movie-form {
+  background: #2d2d2d;
+  border: 2px inset #646464;
+  border-radius: 0;
+  padding: 25px;
+  margin-bottom: 30px;
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #646464;
+  padding-bottom: 15px;
+}
+
+.form-header h3 {
+  color: #fa8b01;
+  font-family: 'Consolas', 'Monaco', 'Lucida Console', monospace;
+  font-size: 1.2rem;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+.close-button {
+  background: #4d4d4d;
+  border: 2px outset #646464;
+  color: #dcdc00;
+  padding: 5px 10px;
+  border-radius: 0;
+  cursor: pointer;
+  font-family: 'Consolas', monospace;
+  font-weight: bold;
+  font-size: 0.9rem;
+  transition: all 0.1s;
+}
+
+.close-button:hover {
+  background: #5a5a5a;
+  border: 2px outset #7a7a7a;
+}
+
+.close-button:active {
+  border: 2px inset #646464;
+  background: #3a3a3a;
+}
+
+.form-errors {
+  background: #1a1a1a;
+  border: 2px solid #ff6b6b;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.error-message {
+  color: #ff6b6b;
+  font-family: 'Consolas', monospace;
+  font-size: 0.9rem;
+  margin: 0 0 5px 0;
+  font-weight: bold;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.form-textarea {
+  width: 100%;
+  padding: 8px;
+  background: #4d4d4d;
+  border: 2px inset #646464;
+  border-radius: 0;
+  font-size: 0.9rem;
+  color: #dcdc00;
+  font-family: 'Consolas', 'Monaco', 'Lucida Console', monospace;
+  resize: vertical;
+  min-height: 80px;
+  transition: border-color 0.2s;
+}
+
+.form-textarea:focus {
+  outline: none;
+  background: #555555;
+  border: 2px solid #4b6eaf;
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.form-textarea::placeholder {
+  color: #888888;
+  font-style: normal;
+}
+
+.form-hint {
+  color: #888888;
+  font-size: 0.75rem;
+  font-family: 'Consolas', monospace;
+  margin-top: 3px;
+  display: block;
+  font-style: italic;
+}
+
+.form-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid #646464;
+}
+
+.submit-button {
+  background: #2d2d2d;
+  border: 2px outset #646464;
+  color: #4b6eaf;
+  padding: 10px 20px;
+  border-radius: 0;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: 'Consolas', monospace;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.1s;
+}
+
+.submit-button:hover {
+  background: #353535;
+  color: #dcdc00;
+  border: 2px outset #7a7a7a;
+}
+
+.submit-button:active {
+  border: 2px inset #646464;
+  background: #3a3a3a;
+}
+
+.cancel-button {
+  background: #4d4d4d;
+  border: 2px outset #646464;
+  color: #bbbbbb;
+  padding: 10px 20px;
+  border-radius: 0;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: 'Consolas', monospace;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.1s;
+}
+
+.cancel-button:hover {
+  background: #5a5a5a;
+  color: #ffffff;
+  border: 2px outset #7a7a7a;
+}
+
+.cancel-button:active {
+  border: 2px inset #646464;
+  background: #3a3a3a;
+}
+
+/* Focus pour les nouveaux éléments */
+.form-textarea:focus,
+.submit-button:focus,
+.cancel-button:focus,
+.close-button:focus,
+.add-movie-button:focus {
+  outline: 2px solid #4b6eaf;
+  outline-offset: 1px;
+}
+
+/* Responsive pour le formulaire */
+@media (max-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+  }
+  
+  .add-movie-form {
+    padding: 20px;
+  }
+  
+  .form-header h3 {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .add-movie-form {
+    padding: 15px;
+  }
+  
+  .form-actions {
+    gap: 10px;
+  }
+  
+  .add-movie-button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
