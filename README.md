@@ -78,13 +78,13 @@ mix setup
 
 ### Installez les dépendances et configurez le projet :  
 
-    ```shell
+    ```
         mix setup
     ```
 
 ### Lancez le serveur Phoenix :  
 
-    ```shell 
+    ```
         mix phx.server
             ou
         iex -S mix phx.server
@@ -98,14 +98,14 @@ mix setup
 
 ### Lancer les tests :  
 
-    ```shell
-    mix test
+    ```
+        mix test
     ```
 
 ### Vérifier le formatage du code :  
 
-    ```shell
-    mix format --check-formatted
+    ```
+        mix format --check-formatted
     ```
 ---
 
@@ -122,5 +122,5 @@ mix setup
 ## 📜 Licence
 
 Ce projet est distribué sous licence MIT.  
-Voir le fichier LICENSE pour plus d’informations.
+
 
