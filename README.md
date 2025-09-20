@@ -31,9 +31,11 @@ mix setup
 
 ## 🔑 Configuration de l’API TMDB
 
-    1. Créez un compte sur https://www.themoviedb.org/  
-    2. Allez dans Settings > API et générez une clé API v3.  
-    3. Créez un fichier `config/secrets.exs` (⚠️ ajoutez-le dans `.gitignore`) :
+1. Créez un compte sur https://www.themoviedb.org/  
+
+2. Allez dans Settings > API et générez une clé API v3.  
+
+3. Créez un fichier `config/secrets.exs` (⚠️ ajoutez-le dans `.gitignore`) :
 
     ```elixir
     # config/secrets.exs
@@ -94,12 +96,12 @@ mix setup
 
 Lancer les tests :  
     ```
-        mix test
+    mix test
     ```
 
 Vérifier le formatage du code :  
     ```
-        mix format --check-formatted
+    mix format --check-formatted
     ```
 ---
 
