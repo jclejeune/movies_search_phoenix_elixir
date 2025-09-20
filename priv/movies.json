@@ -330,21 +330,6 @@
       "year": 2002
     },
     {
-      "description": "During her family's move to the suburbs, a sullen 10-year-old girl wanders into a world ruled by gods and witches.",
-      "director": "Hayao Miyazaki",
-      "duration": 125,
-      "genre": [
-        "Animation",
-        "Adventure",
-        "Family"
-      ],
-      "id": 24,
-      "poster": "/images/posters/movie_24.jpg",
-      "rating": 8.6,
-      "title": "Spirited Away",
-      "year": 2001
-    },
-    {
       "description": "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
       "director": "Christopher Nolan",
       "duration": 169,
@@ -435,21 +420,6 @@
       "year": 1962
     },
     {
-      "description": "Lion prince Simba and his father are targeted by his bitter uncle, who wants to ascend the throne himself.",
-      "director": "Roger Allers",
-      "duration": 88,
-      "genre": [
-        "Animation",
-        "Adventure",
-        "Drama"
-      ],
-      "id": 31,
-      "poster": "/images/posters/movie_31.jpg",
-      "rating": 8.5,
-      "title": "The Lion King",
-      "year": 1994
-    },
-    {
       "description": "Marty McFly, a 17-year-old high school student, is accidentally sent thirty years into the past in a time-traveling DeLorean.",
       "director": "Robert Zemeckis",
       "duration": 116,
@@ -477,19 +447,6 @@
       "rating": 8.5,
       "title": "Terminator 2: Judgment Day",
       "year": 1991
-    },
-    {
-      "description": "A sexually frustrated suburban father has a mid-life crisis after becoming infatuated with his daughter's best friend.",
-      "director": "Sam Mendes",
-      "duration": 122,
-      "genre": [
-        "Drama"
-      ],
-      "id": 34,
-      "poster": "/images/posters/movie_34.jpg",
-      "rating": 8.4,
-      "title": "American Beauty",
-      "year": 1999
     },
     {
       "description": "A Phoenix secretary embezzles money from her employer's client, goes on the run and checks into a remote motel.",
@@ -608,20 +565,6 @@
       "year": 1979
     },
     {
-      "description": "A hack screenwriter writes a screenplay for a former silent film star who has faded into Hollywood obscurity.",
-      "director": "Billy Wilder",
-      "duration": 110,
-      "genre": [
-        "Drama",
-        "Film-Noir"
-      ],
-      "id": 43,
-      "poster": "/images/posters/movie_43.jpg",
-      "rating": 8.4,
-      "title": "Sunset Boulevard",
-      "year": 1950
-    },
-    {
       "description": "An insane American general triggers a path to nuclear holocaust that a War Room full of politicians and generals frantically tries to stop.",
       "director": "Stanley Kubrick",
       "duration": 95,
@@ -680,21 +623,6 @@
       "year": 2002
     },
     {
-      "description": "An undercover cop and a police informant try to identify each other while infiltrating an Irish gang in South Boston.",
-      "director": "Martin Scorsese",
-      "duration": 151,
-      "genre": [
-        "Crime",
-        "Drama",
-        "Thriller"
-      ],
-      "id": 48,
-      "poster": "/images/posters/movie_48.jpg",
-      "rating": 8.4,
-      "title": "The Departed",
-      "year": 2006
-    },
-    {
       "description": "A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.",
       "director": "Ridley Scott",
       "duration": 155,
@@ -708,21 +636,6 @@
       "rating": 8.4,
       "title": "Gladiator",
       "year": 2000
-    },
-    {
-      "description": "After the murder of his father, a young lion prince flees his kingdom only to learn the true meaning of responsibility and bravery.",
-      "director": "Jon Favreau",
-      "duration": 118,
-      "genre": [
-        "Animation",
-        "Adventure",
-        "Drama"
-      ],
-      "id": 50,
-      "poster": "/images/posters/movie_50.jpg",
-      "rating": 6.8,
-      "title": "The Lion King",
-      "year": 2019
     },
     {
       "description": "",

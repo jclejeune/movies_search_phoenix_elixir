@@ -17,7 +17,8 @@ defmodule MovieSearchWeb.MovieLive do
       |> assign(:genres, Movies.get_all_genres(movies))
       |> assign(:imdb_loading, false)
       |> assign(:imdb_progress, 0)
-      |> assign(:show_add_form, false)  # ← AJOUTE ÇA
+      |> assign(:show_form, false)  # ← AJOUTE ÇA
+      |> assign(:editing_movie, nil)   # nil si aucun film n'est édité
       |> assign(:form_errors, [])       # ← AJOUTE ÇA
 
     {:ok, socket}
@@ -110,12 +111,12 @@ defmodule MovieSearchWeb.MovieLive do
   {:noreply, socket}
 end
 
-def handle_event("show_add_form", _, socket) do
-  {:noreply, assign(socket, :show_add_form, true)}
+def handle_event("show_form", _, socket) do
+  {:noreply, assign(socket, :show_form, true)}
 end
 
 def handle_event("hide_add_form", _, socket) do
-  {:noreply, assign(socket, show_add_form: false, form_errors: [])}
+  {:noreply, assign(socket, show_form: false, form_errors: [])}
 end
 
 def handle_event("add_movie", %{"movie" => movie_params}, socket) do
@@ -130,7 +131,7 @@ def handle_event("add_movie", %{"movie" => movie_params}, socket) do
             socket
             |> assign(:all_movies, updated_movies)
             |> assign(:genres, Movies.get_all_genres(updated_movies))
-            |> assign(:show_add_form, false)
+            |> assign(:show_form, false)
             |> assign(:form_errors, [])
             |> update_movies()
 
@@ -145,6 +146,57 @@ def handle_event("add_movie", %{"movie" => movie_params}, socket) do
       {:noreply, assign(socket, :form_errors, errors)}
   end
 end
+
+def handle_event("edit_movie", %{"id" => id}, socket) do
+  movie = Enum.find(socket.assigns.all_movies, &(&1.id == String.to_integer(id)))
+
+  {:noreply,
+   socket
+   |> assign(:editing_movie, movie)
+   |> assign(:show_form, true)
+   |> assign(:form_errors, [])}
+end
+
+def handle_event("update_movie", %{"movie" => params}, socket) do
+  movie = socket.assigns.editing_movie
+  movies = socket.assigns.all_movies
+
+  updated_movie = %Movies{
+    movie |
+    title: params["title"],
+    year: String.to_integer(params["year"]),
+    genre: String.split(params["genre"], ",") |> Enum.map(&String.trim/1),
+    director: params["director"],
+    rating: String.to_float(params["rating"]),
+    duration: String.to_integer(params["duration"]),
+    description: params["description"]
+  }
+
+  updated_movies = Enum.map(movies, fn m -> if m.id == updated_movie.id, do: updated_movie, else: m end)
+  Movies.save_movies(updated_movies)
+
+  {:noreply,
+   socket
+   |> assign(:all_movies, updated_movies)
+   |> assign(:show_form, false)
+   |> assign(:editing_movie, nil)
+   |> assign(:form_errors, [])
+   |> update_movies()}
+end
+
+
+def handle_event("delete_movie", %{"id" => id}, socket) do
+  id = String.to_integer(id)
+  updated_movies = Enum.reject(socket.assigns.all_movies, &(&1.id == id))
+  Movies.save_movies(updated_movies)
+
+  {:noreply,
+   socket
+   |> assign(:all_movies, updated_movies)
+   |> assign(:genres, Movies.get_all_genres(updated_movies))
+   |> update_movies()}
+end
+
 
 # Fonction helper pour détecter si une réparation est nécessaire
 defp needs_repair?(%Movies{poster: poster}) do
