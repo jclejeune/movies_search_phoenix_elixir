@@ -75,12 +75,12 @@ mix setup
 ## 🚀 Lancer l’application
 
 1. Installez les dépendances et configurez le projet :  
-    ```shell
+    ```
         mix setup
     ```
 
 2. Lancez le serveur Phoenix :  
-    ```shell
+    ```
         mix phx.server
         # ou
         iex -S mix phx.server
@@ -93,12 +93,12 @@ mix setup
 ## 🧪 Tests
 
 Lancer les tests :  
-    ```shell
+    ```
         mix test
     ```
 
 Vérifier le formatage du code :  
-    ```shell
+    ```
         mix format --check-formatted
     ```
 ---
