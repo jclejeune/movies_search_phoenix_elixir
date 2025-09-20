@@ -13,18 +13,18 @@ MovieSearch est une application Phoenix qui permet de rechercher des films grâc
 - [PostgreSQL](https://www.postgresql.org/download/) (si utilisé pour le projet)
 
 ### Vérifiez vos versions
-```shell
-elixir -v  
-mix phx.new -v  
+```console
+    elixir -v  
+    mix phx.new -v  
 ```
 
 ### Installer le projet
 
 Clonez le dépôt et installez les dépendances :
-```shell 
-git clone https://github.com/jclejeune/movies_search_phoenix_elixir.git  
-cd movie_search  
-mix setup  
+```console
+    git clone https://github.com/jclejeune/movies_search_phoenix_elixir.git  
+    cd movie_search  
+    mix setup  
 ```
 
 ---
@@ -78,16 +78,14 @@ mix setup
 
 ### Installez les dépendances et configurez le projet :  
 
-    ```
+    ```console
         mix setup
     ```
 
 ### Lancez le serveur Phoenix :  
 
-    ```
-        mix phx.server
-            ou
-        iex -S mix phx.server
+    ```console
+        iex -S mix phx.server 
     ```
 
 ### Ouvrez http://localhost:4000 dans votre navigateur.
@@ -98,14 +96,14 @@ mix setup
 
 ### Lancer les tests :  
 
-    ```
+    ```console
         mix test
     ```
 
 ### Vérifier le formatage du code :  
 
-    ```
-        mix format --check-formatted
+    ```console
+        mix format --check-formatted 
     ```
 ---
 
