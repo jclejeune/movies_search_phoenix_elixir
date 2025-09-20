@@ -79,15 +79,11 @@ Clonez le dépôt et installez les dépendances :
 
 ### Installez les dépendances et configurez le projet :  
 
-    `
-        mix setup
-    `
+    ` mix setup `
 
 ### Lancez le serveur Phoenix :  
 
-    `
-        iex -S mix phx.server 
-    `
+    ` iex -S mix phx.server `
 
 ### Ouvrez http://localhost:4000 dans votre navigateur.
 
@@ -97,15 +93,11 @@ Clonez le dépôt et installez les dépendances :
 
 ### Lancer les tests :  
 
-    `
-        mix test
-    `
+    ` mix test `
 
 ### Vérifier le formatage du code :  
 
-    `
-        mix format --check-formatted 
-    `
+    ` mix format --check-formatted `
 ---
 
 ## 📚 Ressources utiles
