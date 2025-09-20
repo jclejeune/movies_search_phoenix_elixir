@@ -772,6 +772,21 @@
       "rating": 7.2,
       "title": "Willow",
       "year": 1988
+    },
+    {
+      "description": "Alors que leurs maisons du quartier des Goon Docks vont être prochainement saisies et qu'ils passent leurs derniers jours ensemble, quatre adolescents, Mickey, Brand, Mouth et Data, découvrent dans un grenier une carte dessinée par le célèbre pirate Willy-le-Borgne.",
+      "director": "Richard Donner",
+      "duration": 114,
+      "genre": [
+        "Aventure",
+        "Comedie",
+        "Fun"
+      ],
+      "id": 54,
+      "poster": "/images/posters/movie_54.jpg",
+      "rating": 8.0,
+      "title": "The Goonies",
+      "year": 1985
     }
   ]
 }
