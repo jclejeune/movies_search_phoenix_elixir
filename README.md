@@ -76,31 +76,35 @@ mix setup
 
 ## 🚀 Lancer l’application
 
-1. Installez les dépendances et configurez le projet :  
-    ```
+### Installez les dépendances et configurez le projet :  
+
+    ```shell
         mix setup
     ```
 
-2. Lancez le serveur Phoenix :  
-    ```
+### Lancez le serveur Phoenix :  
+
+    ```shell 
         mix phx.server
-        # ou
+            ou
         iex -S mix phx.server
     ```
 
-3. Ouvrez http://localhost:4000 dans votre navigateur.
+### Ouvrez http://localhost:4000 dans votre navigateur.
 
 ---
 
 ## 🧪 Tests
 
-Lancer les tests :  
-    ```
+### Lancer les tests :  
+
+    ```shell
     mix test
     ```
 
-Vérifier le formatage du code :  
-    ```
+### Vérifier le formatage du code :  
+
+    ```shell
     mix format --check-formatted
     ```
 ---
