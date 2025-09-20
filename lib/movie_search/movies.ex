@@ -240,25 +240,38 @@ defmodule MovieSearch.Movies do
   Ajoute un nouveau film avec ID auto-généré
   """
   def add_movie(movies, movie_params) do
-    new_id = get_next_id(movies)
+    title = movie_params["title"]
 
-    new_movie = %__MODULE__{
-      id: new_id,
-      title: movie_params["title"],
-      year: String.to_integer(movie_params["year"]),
-      genre: String.split(movie_params["genre"], ",") |> Enum.map(&String.trim/1),
-      director: movie_params["director"],
-      rating: String.to_float(movie_params["rating"]),
-      duration: String.to_integer(movie_params["duration"]),
-      description: movie_params["description"],
-      poster: get_placeholder_poster_for_genre(movie_params["genre"]),
-      imdb_updated: false
-    }
+    year =
+      case Integer.parse(movie_params["year"]) do
+        {y, _} -> y
+        :error -> nil
+      end
 
-    updated_movies = movies ++ [new_movie]
-    save_movies(updated_movies)
+    # Vérifie doublon exact : même titre + même année
+    if Enum.any?(movies, fn movie -> movie.title == title and movie.year == year end) do
+      {:error, :duplicate}
+    else
+      new_id = get_next_id(movies)
 
-    {:ok, updated_movies, new_movie}
+      new_movie = %__MODULE__{
+        id: new_id,
+        title: title,
+        year: year,
+        genre: String.split(movie_params["genre"], ",") |> Enum.map(&String.trim/1),
+        director: movie_params["director"],
+        rating: String.to_float(movie_params["rating"]),
+        duration: String.to_integer(movie_params["duration"]),
+        description: movie_params["description"],
+        poster: get_placeholder_poster_for_genre(movie_params["genre"]),
+        imdb_updated: false
+      }
+
+      updated_movies = movies ++ [new_movie]
+      save_movies(updated_movies)
+
+      {:ok, updated_movies, new_movie}
+    end
   end
 
   # Helper pour placeholder basé sur le premier genre

@@ -4,11 +4,13 @@ defmodule MovieSearch.TmdbClient do
   @base_url "https://api.themoviedb.org/3"
   @image_base_url "https://image.tmdb.org/t/p/w500"
   # Remplace par ta vraie clé API TMDB
-  @api_key "7bed753dbf4a431a4f49a78ce0e95c32"
+  def api_key do
+    Application.get_env(:movie_search, :tmdb)[:api_key]
+  end
 
   def search_movie(title, year \\ nil) do
     params = %{
-      "api_key" => @api_key,
+      "api_key" => api_key(),
       "query" => title
     }
 
