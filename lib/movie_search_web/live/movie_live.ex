@@ -278,6 +278,35 @@ defmodule MovieSearchWeb.MovieLive do
      |> update_movies()}
   end
 
+  def handle_event("first_page", _, socket) do
+    if socket.assigns.current_page > 1 do
+      socket =
+        socket
+        |> assign(:current_page, 1)
+        |> update_pagination()
+
+      {:noreply, socket}
+    else
+      {:noreply, socket}
+    end
+  end
+
+  def handle_event("last_page", _, socket) do
+    total_pages = socket.assigns.total_pages
+    current_page = socket.assigns.current_page
+
+    if current_page < total_pages do
+      socket =
+        socket
+        |> assign(:current_page, total_pages)
+        |> update_pagination()
+
+      {:noreply, socket}
+    else
+      {:noreply, socket}
+    end
+  end
+
   defp needs_repair?(%Movies{poster: poster}) do
     cond do
       String.starts_with?(poster, "/images/posters/") ->
@@ -399,35 +428,6 @@ defmodule MovieSearchWeb.MovieLive do
   def end_item_number(current_page, items_per_page, total_items) do
     min(current_page * items_per_page, total_items)
   end
-
-  def handle_event("first_page", _, socket) do
-  if socket.assigns.current_page > 1 do
-    socket =
-      socket
-      |> assign(:current_page, 1)
-      |> update_pagination()
-
-    {:noreply, socket}
-  else
-    {:noreply, socket}
-  end
-end
-
-def handle_event("last_page", _, socket) do
-  total_pages = socket.assigns.total_pages
-  current_page = socket.assigns.current_page
-
-  if current_page < total_pages do
-    socket =
-      socket
-      |> assign(:current_page, total_pages)
-      |> update_pagination()
-
-    {:noreply, socket}
-  else
-    {:noreply, socket}
-  end
-end
 
   # Validation helper
   defp validate_movie_params(params) do

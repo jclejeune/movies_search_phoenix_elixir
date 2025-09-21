@@ -120,10 +120,10 @@ body {
 /* Actions du panel */
 .search-actions {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  margin-top: 15px;
-  padding-top: 15px;
+  margin-top: 10px;
+  padding-top: 10px;
   border-top: 1px solid #646464;
 }
 
@@ -137,11 +137,11 @@ body {
   border: 1px solid #646464;
 }
 
-.reset-button {
+.reset-button, .imdb-button, .edit-button, .delete-button  {
   background: #4d4d4d;
   border: 2px outset #646464;
   color: #dcdc00;
-  padding: 8px 16px;
+  padding: 16px 16px;
   border-radius: 0;
   font-size: 0.85rem;
   font-weight: bold;

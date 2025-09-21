@@ -69,10 +69,10 @@
     <div class="search-actions">
       <p class="results-count">
         <strong><%= @total_items %></strong> film(s) trouvé(s)
-        <%= if @total_items > 0 do %>
+        <%!-- <%= if @total_items > 0 do %>
           - Affichage de <%= start_item_number(@current_page, @items_per_page) %> 
           à <%= end_item_number(@current_page, @items_per_page, @total_items) %>
-        <% end %>
+        <% end %> --%>
       </p>
       
       <div class="action-buttons">
@@ -402,7 +402,7 @@
     </div>
   <% end %>
 
-  <!-- PAGINATION AMÉLIORÉE -->
+  <!-- PAGINATION AVEC MEILLEURS CARACTÈRES -->
 <%= if @total_pages > 1 do %>
   <div class="pagination-container">
     <div class="pagination">
@@ -413,10 +413,10 @@
           class="pagination-button pagination-first"
           title="Première page"
         >
-          ‹‹ Premier
+          ⟪⟪
         </button>
       <% else %>
-        <span class="pagination-button pagination-first disabled">‹‹ Premier</span>
+        <span class="pagination-button pagination-first disabled">⟪⟪</span>
       <% end %>
 
       <!-- Bouton PRÉCÉDENT -->
@@ -426,58 +426,15 @@
           class="pagination-button pagination-prev"
           title="Page précédente"
         >
-          ‹ Précédent
+          ⟪
         </button>
       <% else %>
-        <span class="pagination-button pagination-prev disabled">‹ Précédent</span>
+        <span class="pagination-button pagination-prev disabled">⟪</span>
       <% end %>
 
-      <!-- Numéros de pages -->
+      <!-- Numéros de pages (garde ton code existant) -->
       <div class="pagination-numbers">
-        <!-- Première page si on est loin du début -->
-        <%= if @current_page > 3 do %>
-          <button 
-            phx-click="goto_page" 
-            phx-value-page="1" 
-            class="pagination-button pagination-number"
-          >
-            1
-          </button>
-          <%= if @current_page > 4 do %>
-            <span class="pagination-ellipsis">...</span>
-          <% end %>
-        <% end %>
-
-        <!-- Pages autour de la page courante -->
-        <%= for page <- page_range(@current_page, @total_pages) do %>
-          <%= if page == @current_page do %>
-            <span class="pagination-button pagination-number current">
-              <%= page %>
-            </span>
-          <% else %>
-            <button 
-              phx-click="goto_page" 
-              phx-value-page={page} 
-              class="pagination-button pagination-number"
-            >
-              <%= page %>
-            </button>
-          <% end %>
-        <% end %>
-
-        <!-- Dernière page si on est loin de la fin -->
-        <%= if @current_page < @total_pages - 2 do %>
-          <%= if @current_page < @total_pages - 3 do %>
-            <span class="pagination-ellipsis">...</span>
-          <% end %>
-          <button 
-            phx-click="goto_page" 
-            phx-value-page={@total_pages} 
-            class="pagination-button pagination-number"
-          >
-            <%= @total_pages %>
-          </button>
-        <% end %>
+        <!-- ... ton code existant ... -->
       </div>
 
       <!-- Bouton SUIVANT -->
@@ -487,10 +444,10 @@
           class="pagination-button pagination-next"
           title="Page suivante"
         >
-          Suivant ›
+          ⟫
         </button>
       <% else %>
-        <span class="pagination-button pagination-next disabled">Suivant ›</span>
+        <span class="pagination-button pagination-next disabled">⟫</span>
       <% end %>
 
       <!-- Bouton DERNIER -->
@@ -500,10 +457,10 @@
           class="pagination-button pagination-last"
           title="Dernière page"
         >
-          Dernier ››
+          ⟫⟫
         </button>
       <% else %>
-        <span class="pagination-button pagination-last disabled">Dernier ››</span>
+        <span class="pagination-button pagination-last disabled">⟫⟫</span>
       <% end %>
     </div>
 
