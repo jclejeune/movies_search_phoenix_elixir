@@ -1,3 +1,4 @@
+<!-- lib/movie_search_web/live/movie_live.html.heex -->
 <div class="app-container">
   <h1 class="app-title">🎬 Recherche de Films</h1>
   
@@ -21,12 +22,14 @@
       <!-- Filtre par genre -->
       <div class="form-group">
         <label class="form-label">🎭 Genre</label>
-        <select phx-change="filter_genre" name="genre" class="form-select">
+        <select
+          phx-change="filter_genre"
+          name="genre"
+          class="form-select"
+        >
           <option value="">Tous les genres</option>
           <%= for genre <- @genres do %>
-            <option value={genre} selected={@selected_genre == genre}>
-              {genre}
-            </option>
+            <option value={genre} selected={@selected_genre == genre}><%= genre %></option>
           <% end %>
         </select>
       </div>
@@ -34,7 +37,11 @@
       <!-- Filtre par note -->
       <div class="form-group">
         <label class="form-label">⭐ Note minimale</label>
-        <select phx-change="filter_rating" name="rating" class="form-select">
+        <select
+          phx-change="filter_rating"
+          name="rating"
+          class="form-select"
+        >
           <option value="0">Toutes</option>
           <option value="8.0" selected={@min_rating == 8.0}>8.0+</option>
           <option value="8.5" selected={@min_rating == 8.5}>8.5+</option>
@@ -45,7 +52,11 @@
       <!-- Tri -->
       <div class="form-group">
         <label class="form-label">📊 Trier par</label>
-        <select phx-change="sort" name="sort_by" class="form-select">
+        <select
+          phx-change="sort"
+          name="sort_by"
+          class="form-select"
+        >
           <option value="title" selected={@sort_by == "title"}>Titre</option>
           <option value="year" selected={@sort_by == "year"}>Année</option>
           <option value="rating" selected={@sort_by == "rating"}>Note</option>
@@ -57,18 +68,35 @@
     <!-- Actions -->
     <div class="search-actions">
       <p class="results-count">
-        <strong>{length(@movies)}</strong> film(s) trouvé(s)
+        <strong><%= @total_items %></strong> film(s) trouvé(s)
+        <%= if @total_items > 0 do %>
+          - Affichage de <%= start_item_number(@current_page, @items_per_page) %> 
+          à <%= end_item_number(@current_page, @items_per_page, @total_items) %>
+        <% end %>
       </p>
       
       <div class="action-buttons">
+        <%= if @imdb_loading do %>
+          <div class="imdb-progress">
+            <span>🔧 Réparation en cours... <%= @imdb_progress %>%</span>
+            <div class="progress-bar">
+              <div class="progress-fill" style={"width: #{@imdb_progress}%"}></div>
+            </div>
+          </div>
+        <% else %>
+          <button
+            phx-click="check_missing_images"
+            class="imdb-button"
+            title="Vérifie et retélécharge les images manquantes"
+          >
+            🔧 Réparer Images
+          </button>
+        <% end %>
+        
         <button
-          phx-click="check_missing_images"
-          class="imdb-button"
-          title="Vérifie et retélécharge les images manquantes"
+          phx-click="reset_filters"
+          class="reset-button"
         >
-          🔧 Réparer Images
-        </button>
-        <button phx-click="reset_filters" class="reset-button">
           🔄 Réinitialiser
         </button>
       </div>
@@ -77,9 +105,12 @@
 
   <!-- Section formulaires -->
   <div id="movie-form" class="add-movie-section">
-    <!-- Bouton d'ajout - affiché seulement si aucun formulaire ouvert -->
-    <%= if not form_open?(@form_mode) do %>
-      <button phx-click="show_add_form" class="add-movie-button">
+    <!-- Bouton d'ajout - seulement si aucun formulaire ouvert -->
+    <%= if @form_mode == :closed do %>
+      <button
+        phx-click="show_add_form"
+        class="add-movie-button"
+      >
         ➕ Ajouter un Film
       </button>
     <% end %>
@@ -96,7 +127,7 @@
         <%= if has_errors?(@form_errors) do %>
           <div class="form-errors">
             <%= for error <- @form_errors do %>
-              <p class="error-message">⚠️ {error}</p>
+              <p class="error-message">⚠️ <%= error %></p>
             <% end %>
           </div>
         <% end %>
@@ -198,7 +229,7 @@
     <% end %>
     
     <!-- Formulaire d'édition -->
-    <%= if form_is_edit?(@form_mode) and @editing_movie do %>
+    <%= if form_is_edit?(@form_mode) do %>
       <div class="add-movie-form">
         <div class="form-header">
           <h3>✏️ Modifier le Film</h3>
@@ -209,7 +240,7 @@
         <%= if has_errors?(@form_errors) do %>
           <div class="form-errors">
             <%= for error <- @form_errors do %>
-              <p class="error-message">⚠️ {error}</p>
+              <p class="error-message">⚠️ <%= error %></p>
             <% end %>
           </div>
         <% end %>
@@ -301,40 +332,128 @@
           
           <div class="form-actions">
             <button type="submit" class="submit-button">💾 Sauvegarder</button>
-            <button type="button" phx-click="close_form" class="cancel-button">
-              ❌ Annuler
-            </button>
+            <button type="button" phx-click="close_form" class="cancel-button">❌ Annuler</button>
           </div>
         </form>
       </div>
     <% end %>
   </div>
-  
+
+  <!-- PAGINATION - NOUVELLE SECTION -->
+  <%= if @total_pages > 1 do %>
+    <div class="pagination-container">
+      <div class="pagination">
+        <!-- Bouton précédent -->
+        <%= if has_prev_page?(@current_page) do %>
+          <button 
+            phx-click="prev_page" 
+            class="pagination-button pagination-prev"
+            title="Page précédente"
+          >
+            ‹ Précédent
+          </button>
+        <% else %>
+          <span class="pagination-button pagination-prev disabled">‹ Précédent</span>
+        <% end %>
+
+        <!-- Numéros de pages -->
+        <div class="pagination-numbers">
+          <!-- Première page si on est loin du début -->
+          <%= if @current_page > 3 do %>
+            <button 
+              phx-click="goto_page" 
+              phx-value-page="1" 
+              class="pagination-button pagination-number"
+            >
+              1
+            </button>
+            <%= if @current_page > 4 do %>
+              <span class="pagination-ellipsis">...</span>
+            <% end %>
+          <% end %>
+
+          <!-- Pages autour de la page courante -->
+          <%= for page <- page_range(@current_page, @total_pages) do %>
+            <%= if page == @current_page do %>
+              <span class="pagination-button pagination-number current">
+                <%= page %>
+              </span>
+            <% else %>
+              <button 
+                phx-click="goto_page" 
+                phx-value-page={page} 
+                class="pagination-button pagination-number"
+              >
+                <%= page %>
+              </button>
+            <% end %>
+          <% end %>
+
+          <!-- Dernière page si on est loin de la fin -->
+          <%= if @current_page < @total_pages - 2 do %>
+            <%= if @current_page < @total_pages - 3 do %>
+              <span class="pagination-ellipsis">...</span>
+            <% end %>
+            <button 
+              phx-click="goto_page" 
+              phx-value-page={@total_pages} 
+              class="pagination-button pagination-number"
+            >
+              <%= @total_pages %>
+            </button>
+          <% end %>
+        </div>
+
+        <!-- Bouton suivant -->
+        <%= if has_next_page?(@current_page, @total_pages) do %>
+          <button 
+            phx-click="next_page" 
+            class="pagination-button pagination-next"
+            title="Page suivante"
+          >
+            Suivant ›
+          </button>
+        <% else %>
+          <span class="pagination-button pagination-next disabled">Suivant ›</span>
+        <% end %>
+      </div>
+
+      <!-- Info pagination -->
+      <div class="pagination-info">
+        Page <%= @current_page %> sur <%= @total_pages %>
+      </div>
+    </div>
+  <% end %>
+
   <!-- Grille des films -->
   <div class="movies-grid">
     <%= for movie <- @movies do %>
       <div class="movie-card">
         <!-- Poster du film -->
         <div class="movie-poster">
-          <img src={movie.poster} alt={movie.title} loading="lazy" />
+          <img
+            src={movie.poster}
+            alt={movie.title}
+            loading="lazy"
+          />
         </div>
         
         <!-- Informations du film -->
         <div class="movie-info">
-          <h3 class="movie-title">{movie.title}</h3>
+          <h3 class="movie-title"><%= movie.title %></h3>
           
           <div class="movie-meta">
-            <span class="movie-year">{movie.year}</span>
+            <span class="movie-year"><%= movie.year %></span>
             <div class="movie-rating">
               <span class="star">⭐</span> 
-              <span class="score">{movie.rating}</span>
+              <span class="score"><%= movie.rating %></span>
             </div>
           </div>
           
-          <p class="movie-director">🎬 Réalisé par {movie.director}</p>
-          <p class="movie-genres">{format_genres(movie.genre)}</p>
-          <p class="movie-duration">⏱️ {format_duration(movie.duration)}</p>
-          <p class="movie-description">{movie.description}</p>
+          <p class="movie-director">🎬 Réalisé par <%= movie.director %></p>
+          <p class="movie-genres"><%= format_genres(movie.genre) %></p>
+          <p class="movie-duration">⏱️ <%= format_duration(movie.duration) %></p>
+          <p class="movie-description"><%= movie.description %></p>
         </div>
         
         <div class="action-buttons">
@@ -348,7 +467,7 @@
           <button
             phx-click="delete_movie"
             phx-value-id={movie.id}
-            data-confirm="Voulez-vous vraiment supprimer ?"
+            data-confirm="Voulez-vous vraiment supprimer ce film ?"
             class="delete-button"
           >
             🗑️ Supprimer
@@ -357,13 +476,70 @@
       </div>
     <% end %>
   </div>
-  
+
   <!-- Message si aucun film trouvé -->
   <%= if Enum.empty?(@movies) do %>
     <div class="empty-state">
       <div class="icon">🔍</div>
       <h3>Aucun film trouvé</h3>
       <p>Essayez de modifier vos critères de recherche</p>
+    </div>
+  <% end %>
+
+  <!-- Pagination en bas (répétée si plus de 20 résultats) -->
+  <%= if @total_pages > 1 and @total_items > 20 do %>
+    <div class="pagination-container">
+      <div class="pagination">
+        <!-- Bouton précédent -->
+        <%= if has_prev_page?(@current_page) do %>
+          <button 
+            phx-click="prev_page" 
+            class="pagination-button pagination-prev"
+            title="Page précédente"
+          >
+            ‹ Précédent
+          </button>
+        <% else %>
+          <span class="pagination-button pagination-prev disabled">‹ Précédent</span>
+        <% end %>
+
+        <!-- Numéros de pages (version simplifiée en bas) -->
+        <div class="pagination-numbers">
+          <%= for page <- page_range(@current_page, @total_pages) do %>
+            <%= if page == @current_page do %>
+              <span class="pagination-button pagination-number current">
+                <%= page %>
+              </span>
+            <% else %>
+              <button 
+                phx-click="goto_page" 
+                phx-value-page={page} 
+                class="pagination-button pagination-number"
+              >
+                <%= page %>
+              </button>
+            <% end %>
+          <% end %>
+        </div>
+
+        <!-- Bouton suivant -->
+        <%= if has_next_page?(@current_page, @total_pages) do %>
+          <button 
+            phx-click="next_page" 
+            class="pagination-button pagination-next"
+            title="Page suivante"
+          >
+            Suivant ›
+          </button>
+        <% else %>
+          <span class="pagination-button pagination-next disabled">Suivant ›</span>
+        <% end %>
+      </div>
+
+      <!-- Info pagination -->
+      <div class="pagination-info">
+        Page <%= @current_page %> sur <%= @total_pages %>
+      </div>
     </div>
   <% end %>
 </div>
