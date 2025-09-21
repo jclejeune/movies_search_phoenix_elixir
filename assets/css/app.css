@@ -8,6 +8,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -538,12 +542,14 @@ body {
 }
 
 .add-movie-form {
+  scroll-margin-top: 20px;
   background: #2d2d2d;
   border: 2px inset #646464;
   border-radius: 0;
   padding: 25px;
   margin-bottom: 30px;
   box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.5);
+  animation: formSlideIn 0.3s ease-out;
 }
 
 .form-header {
@@ -724,6 +730,8 @@ body {
   
   .add-movie-form {
     padding: 20px;
+    scroll-margin-top: 20px;
+    animation: formSlideIn 0.3s ease-out;
   }
   
   .form-header h3 {
@@ -734,6 +742,8 @@ body {
 @media (max-width: 480px) {
   .add-movie-form {
     padding: 15px;
+    scroll-margin-top: 20px;
+    animation: formSlideIn 0.3s ease-out;
   }
   
   .form-actions {
@@ -745,6 +755,21 @@ body {
     font-size: 0.9rem;
   }
 }
+
+/* Animation d'apparition du formulaire */
+@keyframes formSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+  
 
 
 .edit-button,

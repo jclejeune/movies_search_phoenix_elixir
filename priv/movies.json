@@ -521,21 +521,6 @@
       "year": 1941
     },
     {
-      "description": "After a tragic accident, two stage magicians engage in a battle to create the ultimate illusion.",
-      "director": "Christopher Nolan",
-      "duration": 130,
-      "genre": [
-        "Drama",
-        "Mystery",
-        "Sci-Fi"
-      ],
-      "id": 40,
-      "poster": "/images/posters/movie_40.jpg",
-      "rating": 8.4,
-      "title": "The Prestige",
-      "year": 2006
-    },
-    {
       "description": "A U.S. Army officer serving in Vietnam is tasked with assassinating a renegade Special Forces Colonel.",
       "director": "Francis Ford Coppola",
       "duration": 147,
@@ -638,7 +623,7 @@
       "year": 2000
     },
     {
-      "description": "",
+      "description": "Transporté sur Terre des années auparavant depuis Krypton, Clark Kent découvre qu'avoir des pouvoirs signifie devoir prendre de difficiles décisions.",
       "director": "Zack Snyder",
       "duration": 143,
       "genre": [

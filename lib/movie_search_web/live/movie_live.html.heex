@@ -1,6 +1,6 @@
-<!-- lib/movie_search_web/live/movie_live.html.heex -->
 <div class="app-container">
   <h1 class="app-title">🎬 Recherche de Films</h1>
+  
   <!-- Panel de recherche et filtres -->
   <div class="search-panel">
     <div class="search-grid">
@@ -17,60 +17,48 @@
           />
         </form>
       </div>
+      
       <!-- Filtre par genre -->
       <div class="form-group">
         <label class="form-label">🎭 Genre</label>
-        <select
-          phx-change="filter_genre"
-          name="genre"
-          class="form-select"
-        >
+        <select phx-change="filter_genre" name="genre" class="form-select">
           <option value="">Tous les genres</option>
-          
           <%= for genre <- @genres do %>
-            <option value={genre} selected={@selected_genre == genre}>{genre}</option>
+            <option value={genre} selected={@selected_genre == genre}>
+              {genre}
+            </option>
           <% end %>
         </select>
       </div>
+      
       <!-- Filtre par note -->
       <div class="form-group">
         <label class="form-label">⭐ Note minimale</label>
-        <select
-          phx-change="filter_rating"
-          name="rating"
-          class="form-select"
-        >
+        <select phx-change="filter_rating" name="rating" class="form-select">
           <option value="0">Toutes</option>
-          
           <option value="8.0" selected={@min_rating == 8.0}>8.0+</option>
-          
           <option value="8.5" selected={@min_rating == 8.5}>8.5+</option>
-          
           <option value="9.0" selected={@min_rating == 9.0}>9.0+</option>
         </select>
       </div>
+      
       <!-- Tri -->
       <div class="form-group">
         <label class="form-label">📊 Trier par</label>
-        <select
-          phx-change="sort"
-          name="sort_by"
-          class="form-select"
-        >
+        <select phx-change="sort" name="sort_by" class="form-select">
           <option value="title" selected={@sort_by == "title"}>Titre</option>
-          
           <option value="year" selected={@sort_by == "year"}>Année</option>
-          
           <option value="rating" selected={@sort_by == "rating"}>Note</option>
-          
           <option value="duration" selected={@sort_by == "duration"}>Durée</option>
         </select>
       </div>
     </div>
+    
     <!-- Actions -->
-    <!-- Dans search-actions, ajoute ce bouton -->
     <div class="search-actions">
-      <p class="results-count"><strong>{length(@movies)}</strong> film(s) trouvé(s)</p>
+      <p class="results-count">
+        <strong>{length(@movies)}</strong> film(s) trouvé(s)
+      </p>
       
       <div class="action-buttons">
         <button
@@ -80,34 +68,32 @@
         >
           🔧 Réparer Images
         </button>
-        <button
-          phx-click="reset_filters"
-          class="reset-button"
-        >
+        <button phx-click="reset_filters" class="reset-button">
           🔄 Réinitialiser
         </button>
       </div>
     </div>
   </div>
-  <!-- Bouton pour afficher le formulaire d'ajout -->
-  <div class="add-movie-section">
-    <%= if not @show_form do %>
-      <button
-        phx-click="show_form"
-        class="add-movie-button"
-      >
+
+  <!-- Section formulaires -->
+  <div id="movie-form" class="add-movie-section">
+    <!-- Bouton d'ajout - affiché seulement si aucun formulaire ouvert -->
+    <%= if not form_open?(@form_mode) do %>
+      <button phx-click="show_add_form" class="add-movie-button">
         ➕ Ajouter un Film
       </button>
     <% end %>
+    
     <!-- Formulaire d'ajout -->
-    <%= if @show_form do %>
+    <%= if form_is_add?(@form_mode) do %>
       <div class="add-movie-form">
         <div class="form-header">
           <h3>➕ Ajouter un Nouveau Film</h3>
-           <button phx-click="hide_add_form" class="close-button">✖</button>
+          <button phx-click="close_form" class="close-button">✖</button>
         </div>
+        
         <!-- Erreurs de validation -->
-        <%= if not Enum.empty?(@form_errors) do %>
+        <%= if has_errors?(@form_errors) do %>
           <div class="form-errors">
             <%= for error <- @form_errors do %>
               <p class="error-message">⚠️ {error}</p>
@@ -149,7 +135,8 @@
                 class="form-input"
                 placeholder="Ex: Sci-Fi, Thriller"
                 required
-              /> <small class="form-hint">Séparez par des virgules</small>
+              />
+              <small class="form-hint">Séparez par des virgules</small>
             </div>
             
             <div class="form-group">
@@ -191,7 +178,8 @@
           </div>
           
           <div class="form-group">
-            <label class="form-label">📝 Description</label> <textarea
+            <label class="form-label">📝 Description</label>
+            <textarea
               name="movie[description]"
               class="form-textarea"
               placeholder="Résumé du film..."
@@ -201,7 +189,119 @@
           
           <div class="form-actions">
             <button type="submit" class="submit-button">💾 Ajouter le Film</button>
-            <button type="button" phx-click="hide_add_form" class="cancel-button">
+            <button type="button" phx-click="close_form" class="cancel-button">
+              ❌ Annuler
+            </button>
+          </div>
+        </form>
+      </div>
+    <% end %>
+    
+    <!-- Formulaire d'édition -->
+    <%= if form_is_edit?(@form_mode) and @editing_movie do %>
+      <div class="add-movie-form">
+        <div class="form-header">
+          <h3>✏️ Modifier le Film</h3>
+          <button phx-click="close_form" class="close-button">✖</button>
+        </div>
+        
+        <!-- Erreurs de validation -->
+        <%= if has_errors?(@form_errors) do %>
+          <div class="form-errors">
+            <%= for error <- @form_errors do %>
+              <p class="error-message">⚠️ {error}</p>
+            <% end %>
+          </div>
+        <% end %>
+        
+        <form phx-submit="update_movie">
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label">🎬 Titre</label>
+              <input
+                type="text"
+                name="movie[title]"
+                class="form-input"
+                value={@editing_movie.title}
+                required
+              />
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label">📅 Année</label>
+              <input
+                type="number"
+                name="movie[year]"
+                class="form-input"
+                value={@editing_movie.year}
+                min="1900"
+                max="2030"
+                required
+              />
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label">🎭 Genre(s)</label>
+              <input
+                type="text"
+                name="movie[genre]"
+                class="form-input"
+                value={Enum.join(@editing_movie.genre, ", ")}
+                required
+              />
+              <small class="form-hint">Séparez par des virgules</small>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label">🎬 Réalisateur</label>
+              <input
+                type="text"
+                name="movie[director]"
+                class="form-input"
+                value={@editing_movie.director}
+                required
+              />
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label">⭐ Note</label>
+              <input
+                type="number"
+                name="movie[rating]"
+                class="form-input"
+                value={@editing_movie.rating}
+                min="0"
+                max="10"
+                step="0.1"
+                required
+              />
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label">⏱️ Durée (min)</label>
+              <input
+                type="number"
+                name="movie[duration]"
+                class="form-input"
+                value={@editing_movie.duration}
+                min="1"
+                required
+              />
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">📝 Description</label>
+            <textarea
+              name="movie[description]"
+              class="form-textarea"
+              rows="3"
+            ><%= @editing_movie.description %></textarea>
+          </div>
+          
+          <div class="form-actions">
+            <button type="submit" class="submit-button">💾 Sauvegarder</button>
+            <button type="button" phx-click="close_form" class="cancel-button">
               ❌ Annuler
             </button>
           </div>
@@ -209,18 +309,16 @@
       </div>
     <% end %>
   </div>
+  
   <!-- Grille des films -->
   <div class="movies-grid">
     <%= for movie <- @movies do %>
       <div class="movie-card">
         <!-- Poster du film -->
         <div class="movie-poster">
-          <img
-            src={movie.poster}
-            alt={movie.title}
-            loading="lazy"
-          />
+          <img src={movie.poster} alt={movie.title} loading="lazy" />
         </div>
+        
         <!-- Informations du film -->
         <div class="movie-info">
           <h3 class="movie-title">{movie.title}</h3>
@@ -228,32 +326,43 @@
           <div class="movie-meta">
             <span class="movie-year">{movie.year}</span>
             <div class="movie-rating">
-              <span class="star">⭐</span> <span class="score">{movie.rating}</span>
+              <span class="star">⭐</span> 
+              <span class="score">{movie.rating}</span>
             </div>
           </div>
           
           <p class="movie-director">🎬 Réalisé par {movie.director}</p>
-          
           <p class="movie-genres">{format_genres(movie.genre)}</p>
-          
           <p class="movie-duration">⏱️ {format_duration(movie.duration)}</p>
-          
           <p class="movie-description">{movie.description}</p>
         </div>
+        
         <div class="action-buttons">
-          <button phx-click="edit_movie" phx-value-id={movie.id} class="edit-button">✏️ Éditer</button>
-          <button phx-click="delete_movie" phx-value-id={movie.id} data-confirm="Voulez-vous vraiment supprimer ?" class="delete-button">🗑️ Supprimer</button>
+          <button 
+            phx-click="show_edit_form" 
+            phx-value-id={movie.id} 
+            class="edit-button"
+          >
+            ✏️ Éditer
+          </button>
+          <button
+            phx-click="delete_movie"
+            phx-value-id={movie.id}
+            data-confirm="Voulez-vous vraiment supprimer ?"
+            class="delete-button"
+          >
+            🗑️ Supprimer
+          </button>
         </div>
       </div>
     <% end %>
   </div>
+  
   <!-- Message si aucun film trouvé -->
   <%= if Enum.empty?(@movies) do %>
     <div class="empty-state">
       <div class="icon">🔍</div>
-      
       <h3>Aucun film trouvé</h3>
-      
       <p>Essayez de modifier vos critères de recherche</p>
     </div>
   <% end %>

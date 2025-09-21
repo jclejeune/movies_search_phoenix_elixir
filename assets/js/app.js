@@ -37,6 +37,25 @@ topbar.config({barColors: {0: "#29d"}, shadowColor: "rgba(0, 0, 0, .3)"})
 window.addEventListener("phx:page-loading-start", _info => topbar.show(300))
 window.addEventListener("phx:page-loading-stop", _info => topbar.hide())
 
+// À AJOUTER dans assets/js/app.js (à la fin du fichier)
+
+// Gestion du scroll vers le formulaire
+window.addEventListener("phx:scroll_to_form", (e) => {
+  // Cherche le formulaire (ajout ou édition)
+  const form = document.querySelector('.add-movie-form, .add-movie-section');
+  
+  if (form) {
+    // Scroll fluide vers le formulaire avec un petit délai pour l'animation
+    setTimeout(() => {
+      form.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'start',
+        inline: 'nearest'
+      });
+    }, 100);
+  }
+});
+
 // connect if there are any LiveViews on the page
 liveSocket.connect()
 
