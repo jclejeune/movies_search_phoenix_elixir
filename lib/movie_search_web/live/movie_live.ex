@@ -329,7 +329,7 @@ defmodule MovieSearchWeb.MovieLive do
     Enum.slice(movies, start_index, items_per_page)
   end
 
-  defp calculate_total_pages(total_items, items_per_page) when total_items == 0, do: 1
+  defp calculate_total_pages(total_items, _items_per_page) when total_items == 0, do: 1
   defp calculate_total_pages(total_items, items_per_page) do
     ceil(total_items / items_per_page)
   end
@@ -399,6 +399,35 @@ defmodule MovieSearchWeb.MovieLive do
   def end_item_number(current_page, items_per_page, total_items) do
     min(current_page * items_per_page, total_items)
   end
+
+  def handle_event("first_page", _, socket) do
+  if socket.assigns.current_page > 1 do
+    socket =
+      socket
+      |> assign(:current_page, 1)
+      |> update_pagination()
+
+    {:noreply, socket}
+  else
+    {:noreply, socket}
+  end
+end
+
+def handle_event("last_page", _, socket) do
+  total_pages = socket.assigns.total_pages
+  current_page = socket.assigns.current_page
+
+  if current_page < total_pages do
+    socket =
+      socket
+      |> assign(:current_page, total_pages)
+      |> update_pagination()
+
+    {:noreply, socket}
+  else
+    {:noreply, socket}
+  end
+end
 
   # Validation helper
   defp validate_movie_params(params) do

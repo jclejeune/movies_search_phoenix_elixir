@@ -339,91 +339,7 @@
     <% end %>
   </div>
 
-  <!-- PAGINATION - NOUVELLE SECTION -->
-  <%= if @total_pages > 1 do %>
-    <div class="pagination-container">
-      <div class="pagination">
-        <!-- Bouton précédent -->
-        <%= if has_prev_page?(@current_page) do %>
-          <button 
-            phx-click="prev_page" 
-            class="pagination-button pagination-prev"
-            title="Page précédente"
-          >
-            ‹ Précédent
-          </button>
-        <% else %>
-          <span class="pagination-button pagination-prev disabled">‹ Précédent</span>
-        <% end %>
 
-        <!-- Numéros de pages -->
-        <div class="pagination-numbers">
-          <!-- Première page si on est loin du début -->
-          <%= if @current_page > 3 do %>
-            <button 
-              phx-click="goto_page" 
-              phx-value-page="1" 
-              class="pagination-button pagination-number"
-            >
-              1
-            </button>
-            <%= if @current_page > 4 do %>
-              <span class="pagination-ellipsis">...</span>
-            <% end %>
-          <% end %>
-
-          <!-- Pages autour de la page courante -->
-          <%= for page <- page_range(@current_page, @total_pages) do %>
-            <%= if page == @current_page do %>
-              <span class="pagination-button pagination-number current">
-                <%= page %>
-              </span>
-            <% else %>
-              <button 
-                phx-click="goto_page" 
-                phx-value-page={page} 
-                class="pagination-button pagination-number"
-              >
-                <%= page %>
-              </button>
-            <% end %>
-          <% end %>
-
-          <!-- Dernière page si on est loin de la fin -->
-          <%= if @current_page < @total_pages - 2 do %>
-            <%= if @current_page < @total_pages - 3 do %>
-              <span class="pagination-ellipsis">...</span>
-            <% end %>
-            <button 
-              phx-click="goto_page" 
-              phx-value-page={@total_pages} 
-              class="pagination-button pagination-number"
-            >
-              <%= @total_pages %>
-            </button>
-          <% end %>
-        </div>
-
-        <!-- Bouton suivant -->
-        <%= if has_next_page?(@current_page, @total_pages) do %>
-          <button 
-            phx-click="next_page" 
-            class="pagination-button pagination-next"
-            title="Page suivante"
-          >
-            Suivant ›
-          </button>
-        <% else %>
-          <span class="pagination-button pagination-next disabled">Suivant ›</span>
-        <% end %>
-      </div>
-
-      <!-- Info pagination -->
-      <div class="pagination-info">
-        Page <%= @current_page %> sur <%= @total_pages %>
-      </div>
-    </div>
-  <% end %>
 
   <!-- Grille des films -->
   <div class="movies-grid">
@@ -486,60 +402,115 @@
     </div>
   <% end %>
 
-  <!-- Pagination en bas (répétée si plus de 20 résultats) -->
-  <%= if @total_pages > 1 and @total_items > 20 do %>
-    <div class="pagination-container">
-      <div class="pagination">
-        <!-- Bouton précédent -->
-        <%= if has_prev_page?(@current_page) do %>
-          <button 
-            phx-click="prev_page" 
-            class="pagination-button pagination-prev"
-            title="Page précédente"
-          >
-            ‹ Précédent
-          </button>
-        <% else %>
-          <span class="pagination-button pagination-prev disabled">‹ Précédent</span>
-        <% end %>
+  <!-- PAGINATION AMÉLIORÉE -->
+<%= if @total_pages > 1 do %>
+  <div class="pagination-container">
+    <div class="pagination">
+      <!-- Bouton PREMIER -->
+      <%= if @current_page > 1 do %>
+        <button 
+          phx-click="first_page" 
+          class="pagination-button pagination-first"
+          title="Première page"
+        >
+          ‹‹ Premier
+        </button>
+      <% else %>
+        <span class="pagination-button pagination-first disabled">‹‹ Premier</span>
+      <% end %>
 
-        <!-- Numéros de pages (version simplifiée en bas) -->
-        <div class="pagination-numbers">
-          <%= for page <- page_range(@current_page, @total_pages) do %>
-            <%= if page == @current_page do %>
-              <span class="pagination-button pagination-number current">
-                <%= page %>
-              </span>
-            <% else %>
-              <button 
-                phx-click="goto_page" 
-                phx-value-page={page} 
-                class="pagination-button pagination-number"
-              >
-                <%= page %>
-              </button>
-            <% end %>
+      <!-- Bouton PRÉCÉDENT -->
+      <%= if has_prev_page?(@current_page) do %>
+        <button 
+          phx-click="prev_page" 
+          class="pagination-button pagination-prev"
+          title="Page précédente"
+        >
+          ‹ Précédent
+        </button>
+      <% else %>
+        <span class="pagination-button pagination-prev disabled">‹ Précédent</span>
+      <% end %>
+
+      <!-- Numéros de pages -->
+      <div class="pagination-numbers">
+        <!-- Première page si on est loin du début -->
+        <%= if @current_page > 3 do %>
+          <button 
+            phx-click="goto_page" 
+            phx-value-page="1" 
+            class="pagination-button pagination-number"
+          >
+            1
+          </button>
+          <%= if @current_page > 4 do %>
+            <span class="pagination-ellipsis">...</span>
           <% end %>
-        </div>
+        <% end %>
 
-        <!-- Bouton suivant -->
-        <%= if has_next_page?(@current_page, @total_pages) do %>
+        <!-- Pages autour de la page courante -->
+        <%= for page <- page_range(@current_page, @total_pages) do %>
+          <%= if page == @current_page do %>
+            <span class="pagination-button pagination-number current">
+              <%= page %>
+            </span>
+          <% else %>
+            <button 
+              phx-click="goto_page" 
+              phx-value-page={page} 
+              class="pagination-button pagination-number"
+            >
+              <%= page %>
+            </button>
+          <% end %>
+        <% end %>
+
+        <!-- Dernière page si on est loin de la fin -->
+        <%= if @current_page < @total_pages - 2 do %>
+          <%= if @current_page < @total_pages - 3 do %>
+            <span class="pagination-ellipsis">...</span>
+          <% end %>
           <button 
-            phx-click="next_page" 
-            class="pagination-button pagination-next"
-            title="Page suivante"
+            phx-click="goto_page" 
+            phx-value-page={@total_pages} 
+            class="pagination-button pagination-number"
           >
-            Suivant ›
+            <%= @total_pages %>
           </button>
-        <% else %>
-          <span class="pagination-button pagination-next disabled">Suivant ›</span>
         <% end %>
       </div>
 
-      <!-- Info pagination -->
-      <div class="pagination-info">
-        Page <%= @current_page %> sur <%= @total_pages %>
-      </div>
+      <!-- Bouton SUIVANT -->
+      <%= if has_next_page?(@current_page, @total_pages) do %>
+        <button 
+          phx-click="next_page" 
+          class="pagination-button pagination-next"
+          title="Page suivante"
+        >
+          Suivant ›
+        </button>
+      <% else %>
+        <span class="pagination-button pagination-next disabled">Suivant ›</span>
+      <% end %>
+
+      <!-- Bouton DERNIER -->
+      <%= if @current_page < @total_pages do %>
+        <button 
+          phx-click="last_page" 
+          class="pagination-button pagination-last"
+          title="Dernière page"
+        >
+          Dernier ››
+        </button>
+      <% else %>
+        <span class="pagination-button pagination-last disabled">Dernier ››</span>
+      <% end %>
     </div>
-  <% end %>
+
+    <!-- Info pagination -->
+    <div class="pagination-info">
+      Page <%= @current_page %> sur <%= @total_pages %>
+    </div>
+  </div>
+<% end %>
 </div>
